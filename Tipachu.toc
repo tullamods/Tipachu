@@ -3,5 +3,5 @@
 ## Author: Tuller
 ## Notes: Adds an items icon to its tooltip
 ## SavedVariables: TipachuSize
-## Version: 1.0
+## Version: 1.1
 Tipachu.lua
