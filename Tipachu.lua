@@ -4,6 +4,8 @@
 --]]
 
 local DEFAULT_ICON_SIZE = 24
+local GetItemIconByID = C_Item.GetItemIconByID
+local GetSpellInfo = GetSpellInfo
 
 --add icon to the tooltip
 local function setTooltipIcon(self, icon)
@@ -32,14 +34,14 @@ local function newTooltipHooker(method, func)
 end
 
 local hookItem = newTooltipHooker('OnTooltipSetItem', function(self, ...)
-	local name, link = self:GetItem()
+	local _, link = self:GetItem()
 	if link then
-		setTooltipIcon(self, GetItemIcon(link))
+		setTooltipIcon(self, GetItemIconByID(link))
 	end
 end)
 
 local hookSpell = newTooltipHooker('OnTooltipSetSpell', function(self, ...)
-	local name, rank, id = self:GetSpell()
+	local _, id = self:GetSpell()
 	if id then
 		setTooltipIcon(self, select(3, GetSpellInfo(id)))
 	end
